@@ -1,0 +1,147 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:18:11: 18:11
+    let _1: std::vec::Vec<i32>;          // in scope 0 at src/main.rs:19:9: 19:10
+    let mut _2: std::boxed::Box<[i32]>;  // in scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+    let mut _3: std::boxed::Box<[i32; 1]>; // in scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+    let mut _4: std::boxed::Box<[i32; 1]>; // in scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+    let _5: ();                          // in scope 0 at src/main.rs:20:5: 20:13
+    let mut _6: std::vec::Vec<i32>;      // in scope 0 at src/main.rs:20:11: 20:12
+    scope 1 {
+        debug v => _1;                   // in scope 1 at src/main.rs:19:9: 19:10
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/main.rs:19:9: 19:10
+        StorageLive(_2);                 // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+        StorageLive(_3);                 // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+        StorageLive(_4);                 // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+        _4 = Box([i32; 1]);              // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+        (*_4) = [const 1_i32];           // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:29: 49:38
+        _3 = move _4;                    // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+        _2 = move _3 as std::boxed::Box<[i32]> (Pointer(Unsize)); // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:25: 49:38
+        StorageDead(_4);                 // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:37: 49:38
+        StorageDead(_3);                 // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:37: 49:38
+        _1 = slice::<impl [i32]>::into_vec::<std::alloc::Global>(move _2) -> bb1; // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:9: 49:39
+                                         // mir::Constant
+                                         // + span: /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:9: 49:24
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(std::boxed::Box<[i32]>) -> std::vec::Vec<i32> {std::slice::<impl [i32]>::into_vec::<std::alloc::Global>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_2);                 // scope 0 at /home/boqin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/macros.rs:49:38: 49:39
+        StorageLive(_5);                 // scope 1 at src/main.rs:20:5: 20:13
+        StorageLive(_6);                 // scope 1 at src/main.rs:20:11: 20:12
+        _6 = move _1;                    // scope 1 at src/main.rs:20:11: 20:12
+        _5 = buggy(move _6) -> bb2;      // scope 1 at src/main.rs:20:5: 20:13
+                                         // mir::Constant
+                                         // + span: src/main.rs:20:5: 20:10
+                                         // + literal: Const { ty: fn(std::vec::Vec<i32>) {buggy}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_6);                 // scope 1 at src/main.rs:20:12: 20:13
+        StorageDead(_5);                 // scope 1 at src/main.rs:20:13: 20:14
+        _0 = const ();                   // scope 0 at src/main.rs:18:11: 21:2
+        StorageDead(_1);                 // scope 0 at src/main.rs:21:1: 21:2
+        return;                          // scope 0 at src/main.rs:21:2: 21:2
+    }
+}
+
+static mut GLOBAL: Res = {
+    let mut _0: Res;                     // return place in scope 0 at src/main.rs:5:20: 5:23
+    let mut _1: *mut i32;                // in scope 0 at src/main.rs:6:8: 6:28
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/main.rs:6:8: 6:28
+        _1 = null_mut::<i32>() -> bb1;   // scope 0 at src/main.rs:6:8: 6:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:6:8: 6:26
+                                         // + literal: Const { ty: fn() -> *mut i32 {std::ptr::null_mut::<i32>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_0.0: *mut i32) = move _1;      // scope 0 at src/main.rs:5:26: 8:2
+        (_0.1: i32) = const 0_i32;       // scope 0 at src/main.rs:5:26: 8:2
+        StorageDead(_1);                 // scope 0 at src/main.rs:8:1: 8:2
+        return;                          // scope 0 at src/main.rs:5:1: 8:3
+    }
+}
+
+fn buggy(_1: Vec<i32>) -> () {
+    debug v => _1;                       // in scope 0 at src/main.rs:9:10: 9:15
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:9:27: 9:27
+    let _2: *mut i32;                    // in scope 0 at src/main.rs:10:9: 10:10
+    let mut _3: &mut i32;                // in scope 0 at src/main.rs:10:13: 10:22
+    let mut _4: &mut i32;                // in scope 0 at src/main.rs:10:18: 10:22
+    let mut _5: &mut std::vec::Vec<i32>; // in scope 0 at src/main.rs:10:18: 10:19
+    let mut _6: Res;                     // in scope 0 at src/main.rs:15:18: 15:33
+    let mut _7: *mut i32;                // in scope 0 at src/main.rs:15:24: 15:25
+    let mut _8: *mut Res;                // in scope 0 at src/main.rs:15:9: 15:15
+    scope 1 {
+        debug p => _2;                   // in scope 1 at src/main.rs:10:9: 10:10
+        scope 2 {
+        }
+        scope 3 {
+        }
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:10:9: 10:10
+        StorageLive(_3);                 // scope 0 at src/main.rs:10:13: 10:22
+        StorageLive(_4);                 // scope 0 at src/main.rs:10:18: 10:22
+        StorageLive(_5);                 // scope 0 at src/main.rs:10:18: 10:19
+        _5 = &mut _1;                    // scope 0 at src/main.rs:10:18: 10:19
+        _4 = <Vec<i32> as IndexMut<usize>>::index_mut(move _5, const 0_usize) -> [return: bb1, unwind: bb3]; // scope 0 at src/main.rs:10:18: 10:22
+                                         // mir::Constant
+                                         // + span: src/main.rs:10:18: 10:22
+                                         // + literal: Const { ty: for<'r> fn(&'r mut std::vec::Vec<i32>, usize) -> &'r mut <std::vec::Vec<i32> as std::ops::Index<usize>>::Output {<std::vec::Vec<i32> as std::ops::IndexMut<usize>>::index_mut}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_5);                 // scope 0 at src/main.rs:10:21: 10:22
+        _3 = &mut (*_4);                 // scope 0 at src/main.rs:10:13: 10:22
+        _2 = &raw mut (*_3);             // scope 0 at src/main.rs:10:13: 10:22
+        StorageDead(_3);                 // scope 0 at src/main.rs:10:34: 10:35
+        (*_2) = const 2_i32;             // scope 2 at src/main.rs:12:9: 12:15
+        StorageLive(_6);                 // scope 3 at src/main.rs:15:18: 15:33
+        StorageLive(_7);                 // scope 3 at src/main.rs:15:24: 15:25
+        _7 = _2;                         // scope 3 at src/main.rs:15:24: 15:25
+        (_6.0: *mut i32) = move _7;      // scope 3 at src/main.rs:15:18: 15:33
+        (_6.1: i32) = const 1_i32;       // scope 3 at src/main.rs:15:18: 15:33
+        StorageDead(_7);                 // scope 3 at src/main.rs:15:32: 15:33
+        StorageLive(_8);                 // scope 3 at src/main.rs:15:9: 15:15
+        _8 = const {alloc0: *mut Res};   // scope 3 at src/main.rs:15:9: 15:15
+                                         // ty::Const
+                                         // + ty: *mut Res
+                                         // + val: Value(Scalar(alloc0))
+                                         // mir::Constant
+                                         // + span: src/main.rs:15:9: 15:15
+                                         // + literal: Const { ty: *mut Res, val: Value(Scalar(alloc0)) }
+        (*_8) = move _6;                 // scope 3 at src/main.rs:15:9: 15:33
+        StorageDead(_6);                 // scope 3 at src/main.rs:15:32: 15:33
+        StorageDead(_8);                 // scope 3 at src/main.rs:15:33: 15:34
+        _0 = const ();                   // scope 3 at src/main.rs:14:5: 16:6
+        StorageDead(_4);                 // scope 0 at src/main.rs:17:1: 17:2
+        StorageDead(_2);                 // scope 0 at src/main.rs:17:1: 17:2
+        drop(_1) -> bb2;                 // scope 0 at src/main.rs:17:1: 17:2
+    }
+
+    bb2: {
+        return;                          // scope 0 at src/main.rs:17:2: 17:2
+    }
+
+    bb3 (cleanup): {
+        drop(_1) -> bb4;                 // scope 0 at src/main.rs:17:1: 17:2
+    }
+
+    bb4 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:9:1: 17:2
+    }
+}
+
+alloc0 (static: GLOBAL, size: 16, align: 8) {
+    00 00 00 00 00 00 00 00 00 00 00 00 __ __ __ __ │ ............░░░░
+}

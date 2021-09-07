@@ -1,0 +1,11 @@
+[package]
+name = "alias-stub"
+version = "0.1.0"
+authors = ["BurtonQin <bobbqqin@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+#[build]
+#rustc = "/home/boqin/Projects/rust-static-analyzer/target/debug/rust-static-analyzer"
+
+[dependencies]

@@ -1,0 +1,309 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:25:11: 25:11
+    let _1: Obj;                         // in scope 0 at src/main.rs:26:9: 26:12
+    let _2: ();                          // in scope 0 at src/main.rs:27:5: 27:16
+    let mut _3: &Obj;                    // in scope 0 at src/main.rs:27:5: 27:8
+    scope 1 {
+        debug obj => _1;                 // in scope 1 at src/main.rs:26:9: 26:12
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/main.rs:26:9: 26:12
+        _1 = Obj::new() -> bb1;          // scope 0 at src/main.rs:26:15: 26:25
+                                         // mir::Constant
+                                         // + span: src/main.rs:26:15: 26:23
+                                         // + literal: Const { ty: fn() -> Obj {Obj::new}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageLive(_2);                 // scope 1 at src/main.rs:27:5: 27:16
+        StorageLive(_3);                 // scope 1 at src/main.rs:27:5: 27:8
+        _3 = &_1;                        // scope 1 at src/main.rs:27:5: 27:8
+        _2 = Obj::check(move _3) -> [return: bb2, unwind: bb4]; // scope 1 at src/main.rs:27:5: 27:16
+                                         // mir::Constant
+                                         // + span: src/main.rs:27:9: 27:14
+                                         // + literal: Const { ty: for<'r> fn(&'r Obj) {Obj::check}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_3);                 // scope 1 at src/main.rs:27:15: 27:16
+        StorageDead(_2);                 // scope 1 at src/main.rs:27:16: 27:17
+        _0 = const ();                   // scope 0 at src/main.rs:25:11: 28:2
+        drop(_1) -> bb3;                 // scope 0 at src/main.rs:28:1: 28:2
+    }
+
+    bb3: {
+        StorageDead(_1);                 // scope 0 at src/main.rs:28:1: 28:2
+        return;                          // scope 0 at src/main.rs:28:2: 28:2
+    }
+
+    bb4 (cleanup): {
+        drop(_1) -> bb5;                 // scope 0 at src/main.rs:28:1: 28:2
+    }
+
+    bb5 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:25:1: 28:2
+    }
+}
+
+fn <impl at src/main.rs:7:1: 24:2>::new() -> Obj {
+    let mut _0: Obj;                     // return place in scope 0 at src/main.rs:8:17: 8:21
+    let mut _1: std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:10:21: 10:50
+    let mut _2: std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:10:30: 10:49
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/main.rs:10:21: 10:50
+        StorageLive(_2);                 // scope 0 at src/main.rs:10:30: 10:49
+        _2 = AtomicUsize::new(const 1_usize) -> bb1; // scope 0 at src/main.rs:10:30: 10:49
+                                         // mir::Constant
+                                         // + span: src/main.rs:10:30: 10:46
+                                         // + literal: Const { ty: fn(usize) -> std::sync::atomic::AtomicUsize {std::sync::atomic::AtomicUsize::new}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        _1 = Arc::<AtomicUsize>::new(move _2) -> bb2; // scope 0 at src/main.rs:10:21: 10:50
+                                         // mir::Constant
+                                         // + span: src/main.rs:10:21: 10:29
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(std::sync::atomic::AtomicUsize) -> std::sync::Arc<std::sync::atomic::AtomicUsize> {std::sync::Arc::<std::sync::atomic::AtomicUsize>::new}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/main.rs:10:49: 10:50
+        (_0.0: std::sync::Arc<std::sync::atomic::AtomicUsize>) = move _1; // scope 0 at src/main.rs:9:9: 11:10
+        StorageDead(_1);                 // scope 0 at src/main.rs:11:9: 11:10
+        return;                          // scope 0 at src/main.rs:12:6: 12:6
+    }
+}
+
+fn <impl at src/main.rs:7:1: 24:2>::check(_1: &Obj) -> () {
+    debug self => _1;                    // in scope 0 at src/main.rs:13:14: 13:19
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:13:21: 13:21
+    let _2: &std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:14:13: 14:14
+    let mut _4: &std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:15:28: 15:29
+    let mut _5: usize;                   // in scope 0 at src/main.rs:16:15: 16:40
+    let mut _6: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:16:15: 16:16
+    let _7: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:16:15: 16:40
+    let mut _8: &std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:16:15: 16:16
+    let mut _9: std::sync::atomic::Ordering; // in scope 0 at src/main.rs:16:22: 16:39
+    let _10: ();                         // in scope 0 at src/main.rs:17:13: 21:14
+    let mut _11: usize;                  // in scope 0 at src/main.rs:17:19: 17:44
+    let mut _12: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:17:19: 17:20
+    let _13: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:17:19: 17:44
+    let mut _14: &std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:17:19: 17:20
+    let mut _15: std::sync::atomic::Ordering; // in scope 0 at src/main.rs:17:26: 17:43
+    let mut _16: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:18:22: 18:23
+    let _17: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:18:22: 18:51
+    let mut _18: &std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:18:22: 18:23
+    let mut _19: std::sync::atomic::Ordering; // in scope 0 at src/main.rs:18:33: 18:50
+    let mut _20: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:19:22: 19:33
+    let _21: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:19:22: 19:61
+    let mut _22: &std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:19:22: 19:33
+    let mut _23: std::sync::atomic::Ordering; // in scope 0 at src/main.rs:19:43: 19:60
+    let mut _24: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:20:22: 20:33
+    let _25: &std::sync::atomic::AtomicUsize; // in scope 0 at src/main.rs:20:22: 20:61
+    let mut _26: &std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 0 at src/main.rs:20:22: 20:33
+    let mut _27: std::sync::atomic::Ordering; // in scope 0 at src/main.rs:20:43: 20:60
+    scope 1 {
+        debug a => _2;                   // in scope 1 at src/main.rs:14:13: 14:14
+        let _3: std::sync::Arc<std::sync::atomic::AtomicUsize>; // in scope 1 at src/main.rs:15:13: 15:14
+        scope 2 {
+            debug b => _3;               // in scope 2 at src/main.rs:15:13: 15:14
+        }
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:14:13: 14:14
+        _2 = &((*_1).0: std::sync::Arc<std::sync::atomic::AtomicUsize>); // scope 0 at src/main.rs:14:17: 14:29
+        StorageLive(_3);                 // scope 1 at src/main.rs:15:13: 15:14
+        StorageLive(_4);                 // scope 1 at src/main.rs:15:28: 15:29
+        _4 = _2;                         // scope 1 at src/main.rs:15:28: 15:29
+        _3 = <Arc<AtomicUsize> as Clone>::clone(move _4) -> bb1; // scope 1 at src/main.rs:15:17: 15:30
+                                         // mir::Constant
+                                         // + span: src/main.rs:15:17: 15:27
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::Arc<std::sync::atomic::AtomicUsize>) -> std::sync::Arc<std::sync::atomic::AtomicUsize> {<std::sync::Arc<std::sync::atomic::AtomicUsize> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/main.rs:15:29: 15:30
+        goto -> bb2;                     // scope 2 at src/main.rs:16:9: 22:10
+    }
+
+    bb2: {
+        StorageLive(_5);                 // scope 2 at src/main.rs:16:15: 16:40
+        StorageLive(_6);                 // scope 2 at src/main.rs:16:15: 16:16
+        StorageLive(_7);                 // scope 2 at src/main.rs:16:15: 16:40
+        StorageLive(_8);                 // scope 2 at src/main.rs:16:15: 16:16
+        _8 = _2;                         // scope 2 at src/main.rs:16:15: 16:16
+        _7 = <Arc<AtomicUsize> as Deref>::deref(move _8) -> [return: bb3, unwind: bb20]; // scope 2 at src/main.rs:16:15: 16:40
+                                         // mir::Constant
+                                         // + span: src/main.rs:16:15: 16:40
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::Arc<std::sync::atomic::AtomicUsize>) -> &'r <std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::Target {<std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::deref}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb3: {
+        _6 = _7;                         // scope 2 at src/main.rs:16:15: 16:16
+        StorageDead(_8);                 // scope 2 at src/main.rs:16:15: 16:16
+        StorageLive(_9);                 // scope 2 at src/main.rs:16:22: 16:39
+        discriminant(_9) = 0;            // scope 2 at src/main.rs:16:22: 16:39
+        _5 = AtomicUsize::load(move _6, move _9) -> [return: bb4, unwind: bb20]; // scope 2 at src/main.rs:16:15: 16:40
+                                         // mir::Constant
+                                         // + span: src/main.rs:16:17: 16:21
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::atomic::AtomicUsize, std::sync::atomic::Ordering) -> usize {std::sync::atomic::AtomicUsize::load}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_9);                 // scope 2 at src/main.rs:16:39: 16:40
+        StorageDead(_6);                 // scope 2 at src/main.rs:16:39: 16:40
+        StorageDead(_7);                 // scope 2 at src/main.rs:16:44: 16:45
+        switchInt(move _5) -> [1_usize: bb6, otherwise: bb5]; // scope 2 at src/main.rs:16:9: 22:10
+    }
+
+    bb5: {
+        StorageDead(_5);                 // scope 2 at src/main.rs:16:9: 22:10
+        _0 = const ();                   // scope 2 at src/main.rs:16:9: 22:10
+        drop(_3) -> bb19;                // scope 1 at src/main.rs:23:5: 23:6
+    }
+
+    bb6: {
+        StorageDead(_5);                 // scope 2 at src/main.rs:16:9: 22:10
+        StorageLive(_10);                // scope 2 at src/main.rs:17:13: 21:14
+        StorageLive(_11);                // scope 2 at src/main.rs:17:19: 17:44
+        StorageLive(_12);                // scope 2 at src/main.rs:17:19: 17:20
+        StorageLive(_13);                // scope 2 at src/main.rs:17:19: 17:44
+        StorageLive(_14);                // scope 2 at src/main.rs:17:19: 17:20
+        _14 = _2;                        // scope 2 at src/main.rs:17:19: 17:20
+        _13 = <Arc<AtomicUsize> as Deref>::deref(move _14) -> [return: bb7, unwind: bb20]; // scope 2 at src/main.rs:17:19: 17:44
+                                         // mir::Constant
+                                         // + span: src/main.rs:17:19: 17:44
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::Arc<std::sync::atomic::AtomicUsize>) -> &'r <std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::Target {<std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::deref}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb7: {
+        _12 = _13;                       // scope 2 at src/main.rs:17:19: 17:20
+        StorageDead(_14);                // scope 2 at src/main.rs:17:19: 17:20
+        StorageLive(_15);                // scope 2 at src/main.rs:17:26: 17:43
+        discriminant(_15) = 0;           // scope 2 at src/main.rs:17:26: 17:43
+        _11 = AtomicUsize::load(move _12, move _15) -> [return: bb8, unwind: bb20]; // scope 2 at src/main.rs:17:19: 17:44
+                                         // mir::Constant
+                                         // + span: src/main.rs:17:21: 17:25
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::atomic::AtomicUsize, std::sync::atomic::Ordering) -> usize {std::sync::atomic::AtomicUsize::load}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb8: {
+        StorageDead(_15);                // scope 2 at src/main.rs:17:43: 17:44
+        StorageDead(_12);                // scope 2 at src/main.rs:17:43: 17:44
+        switchInt(_11) -> [1_usize: bb10, 2_usize: bb13, otherwise: bb9]; // scope 2 at src/main.rs:18:17: 18:18
+    }
+
+    bb9: {
+        StorageLive(_24);                // scope 2 at src/main.rs:20:22: 20:33
+        StorageLive(_25);                // scope 2 at src/main.rs:20:22: 20:61
+        StorageLive(_26);                // scope 2 at src/main.rs:20:22: 20:33
+        _26 = &((*_1).0: std::sync::Arc<std::sync::atomic::AtomicUsize>); // scope 2 at src/main.rs:20:22: 20:33
+        _25 = <Arc<AtomicUsize> as Deref>::deref(move _26) -> [return: bb16, unwind: bb20]; // scope 2 at src/main.rs:20:22: 20:61
+                                         // mir::Constant
+                                         // + span: src/main.rs:20:22: 20:61
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::Arc<std::sync::atomic::AtomicUsize>) -> &'r <std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::Target {<std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::deref}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb10: {
+        StorageLive(_16);                // scope 2 at src/main.rs:18:22: 18:23
+        StorageLive(_17);                // scope 2 at src/main.rs:18:22: 18:51
+        StorageLive(_18);                // scope 2 at src/main.rs:18:22: 18:23
+        _18 = &_3;                       // scope 2 at src/main.rs:18:22: 18:23
+        _17 = <Arc<AtomicUsize> as Deref>::deref(move _18) -> [return: bb11, unwind: bb20]; // scope 2 at src/main.rs:18:22: 18:51
+                                         // mir::Constant
+                                         // + span: src/main.rs:18:22: 18:51
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::Arc<std::sync::atomic::AtomicUsize>) -> &'r <std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::Target {<std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::deref}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb11: {
+        _16 = _17;                       // scope 2 at src/main.rs:18:22: 18:23
+        StorageDead(_18);                // scope 2 at src/main.rs:18:22: 18:23
+        StorageLive(_19);                // scope 2 at src/main.rs:18:33: 18:50
+        discriminant(_19) = 0;           // scope 2 at src/main.rs:18:33: 18:50
+        _10 = AtomicUsize::store(move _16, const 2_usize, move _19) -> [return: bb12, unwind: bb20]; // scope 2 at src/main.rs:18:22: 18:51
+                                         // mir::Constant
+                                         // + span: src/main.rs:18:24: 18:29
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::atomic::AtomicUsize, usize, std::sync::atomic::Ordering) {std::sync::atomic::AtomicUsize::store}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb12: {
+        StorageDead(_19);                // scope 2 at src/main.rs:18:50: 18:51
+        StorageDead(_17);                // scope 2 at src/main.rs:18:50: 18:51
+        StorageDead(_16);                // scope 2 at src/main.rs:18:50: 18:51
+        goto -> bb18;                    // scope 2 at src/main.rs:17:13: 21:14
+    }
+
+    bb13: {
+        StorageLive(_20);                // scope 2 at src/main.rs:19:22: 19:33
+        StorageLive(_21);                // scope 2 at src/main.rs:19:22: 19:61
+        StorageLive(_22);                // scope 2 at src/main.rs:19:22: 19:33
+        _22 = &((*_1).0: std::sync::Arc<std::sync::atomic::AtomicUsize>); // scope 2 at src/main.rs:19:22: 19:33
+        _21 = <Arc<AtomicUsize> as Deref>::deref(move _22) -> [return: bb14, unwind: bb20]; // scope 2 at src/main.rs:19:22: 19:61
+                                         // mir::Constant
+                                         // + span: src/main.rs:19:22: 19:61
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::Arc<std::sync::atomic::AtomicUsize>) -> &'r <std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::Target {<std::sync::Arc<std::sync::atomic::AtomicUsize> as std::ops::Deref>::deref}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb14: {
+        _20 = _21;                       // scope 2 at src/main.rs:19:22: 19:33
+        StorageDead(_22);                // scope 2 at src/main.rs:19:32: 19:33
+        StorageLive(_23);                // scope 2 at src/main.rs:19:43: 19:60
+        discriminant(_23) = 0;           // scope 2 at src/main.rs:19:43: 19:60
+        _10 = AtomicUsize::store(move _20, const 3_usize, move _23) -> [return: bb15, unwind: bb20]; // scope 2 at src/main.rs:19:22: 19:61
+                                         // mir::Constant
+                                         // + span: src/main.rs:19:34: 19:39
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::atomic::AtomicUsize, usize, std::sync::atomic::Ordering) {std::sync::atomic::AtomicUsize::store}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb15: {
+        StorageDead(_23);                // scope 2 at src/main.rs:19:60: 19:61
+        StorageDead(_21);                // scope 2 at src/main.rs:19:60: 19:61
+        StorageDead(_20);                // scope 2 at src/main.rs:19:60: 19:61
+        goto -> bb18;                    // scope 2 at src/main.rs:17:13: 21:14
+    }
+
+    bb16: {
+        _24 = _25;                       // scope 2 at src/main.rs:20:22: 20:33
+        StorageDead(_26);                // scope 2 at src/main.rs:20:32: 20:33
+        StorageLive(_27);                // scope 2 at src/main.rs:20:43: 20:60
+        discriminant(_27) = 0;           // scope 2 at src/main.rs:20:43: 20:60
+        _10 = AtomicUsize::store(move _24, const 4_usize, move _27) -> [return: bb17, unwind: bb20]; // scope 2 at src/main.rs:20:22: 20:61
+                                         // mir::Constant
+                                         // + span: src/main.rs:20:34: 20:39
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::atomic::AtomicUsize, usize, std::sync::atomic::Ordering) {std::sync::atomic::AtomicUsize::store}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb17: {
+        StorageDead(_27);                // scope 2 at src/main.rs:20:60: 20:61
+        StorageDead(_25);                // scope 2 at src/main.rs:20:60: 20:61
+        StorageDead(_24);                // scope 2 at src/main.rs:20:60: 20:61
+        goto -> bb18;                    // scope 2 at src/main.rs:17:13: 21:14
+    }
+
+    bb18: {
+        StorageDead(_13);                // scope 2 at src/main.rs:21:14: 21:15
+        StorageDead(_11);                // scope 2 at src/main.rs:21:14: 21:15
+        StorageDead(_10);                // scope 2 at src/main.rs:21:14: 21:15
+        goto -> bb2;                     // scope 2 at src/main.rs:16:9: 22:10
+    }
+
+    bb19: {
+        StorageDead(_3);                 // scope 1 at src/main.rs:23:5: 23:6
+        StorageDead(_2);                 // scope 0 at src/main.rs:23:5: 23:6
+        return;                          // scope 0 at src/main.rs:23:6: 23:6
+    }
+
+    bb20 (cleanup): {
+        drop(_3) -> bb21;                // scope 1 at src/main.rs:23:5: 23:6
+    }
+
+    bb21 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:13:5: 23:6
+    }
+}

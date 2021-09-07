@@ -1,0 +1,136 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn <impl at src/main.rs:9:1: 22:2>::new(_1: *mut i32) -> Outer {
+    debug d => _1;                       // in scope 0 at src/main.rs:10:12: 10:17
+    let mut _0: Outer;                   // return place in scope 0 at src/main.rs:10:32: 10:36
+    let _2: Inner;                       // in scope 0 at src/main.rs:11:13: 11:18
+    let mut _3: *mut *mut i32;           // in scope 0 at src/main.rs:12:19: 12:42
+    let mut _4: &mut *mut i32;           // in scope 0 at src/main.rs:12:19: 12:25
+    let mut _5: Inner;                   // in scope 0 at src/main.rs:15:11: 15:16
+    scope 1 {
+        debug inner => _2;               // in scope 1 at src/main.rs:11:13: 11:18
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:11:13: 11:18
+        StorageLive(_3);                 // scope 0 at src/main.rs:12:19: 12:42
+        StorageLive(_4);                 // scope 0 at src/main.rs:12:19: 12:25
+        _4 = &mut _1;                    // scope 0 at src/main.rs:12:19: 12:25
+        _3 = &raw mut (*_4);             // scope 0 at src/main.rs:12:19: 12:25
+        (_2.0: *mut *mut i32) = move _3; // scope 0 at src/main.rs:11:21: 13:13
+        StorageDead(_3);                 // scope 0 at src/main.rs:13:12: 13:13
+        StorageDead(_4);                 // scope 0 at src/main.rs:13:13: 13:14
+        StorageLive(_5);                 // scope 1 at src/main.rs:15:11: 15:16
+        _5 = move _2;                    // scope 1 at src/main.rs:15:11: 15:16
+        (_0.0: Inner) = move _5;         // scope 1 at src/main.rs:14:8: 16:9
+        StorageDead(_5);                 // scope 1 at src/main.rs:16:8: 16:9
+        StorageDead(_2);                 // scope 0 at src/main.rs:17:5: 17:6
+        return;                          // scope 0 at src/main.rs:17:6: 17:6
+    }
+}
+
+fn <impl at src/main.rs:9:1: 22:2>::change(_1: &mut Outer) -> () {
+    debug self => _1;                    // in scope 0 at src/main.rs:19:15: 19:24
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:19:26: 19:26
+    scope 1 {
+    }
+
+    bb0: {
+        (*(*(((*_1).0: Inner).0: *mut *mut i32))) = const 1_i32; // scope 1 at src/main.rs:20:18: 20:36
+        _0 = const ();                   // scope 1 at src/main.rs:20:9: 20:39
+        return;                          // scope 0 at src/main.rs:21:6: 21:6
+    }
+}
+
+fn main() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:24:11: 24:11
+    let _1: std::boxed::Box<i32>;        // in scope 0 at src/main.rs:25:9: 25:10
+    let mut _3: std::boxed::Box<i32>;    // in scope 0 at src/main.rs:26:27: 26:28
+    let mut _5: *mut i32;                // in scope 0 at src/main.rs:27:32: 27:33
+    let _6: ();                          // in scope 0 at src/main.rs:28:5: 28:19
+    let mut _7: &mut Outer;              // in scope 0 at src/main.rs:28:5: 28:10
+    let _8: std::boxed::Box<i32>;        // in scope 0 at src/main.rs:29:14: 29:30
+    let mut _9: *mut i32;                // in scope 0 at src/main.rs:29:28: 29:29
+    scope 1 {
+        debug a => _1;                   // in scope 1 at src/main.rs:25:9: 25:10
+        let _2: *mut i32;                // in scope 1 at src/main.rs:26:9: 26:10
+        scope 2 {
+            debug p => _2;               // in scope 2 at src/main.rs:26:9: 26:10
+            let mut _4: Outer;           // in scope 2 at src/main.rs:27:9: 27:18
+            scope 3 {
+                debug outer => _4;       // in scope 3 at src/main.rs:27:9: 27:18
+                scope 4 {
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/main.rs:25:9: 25:10
+        _1 = Box::<i32>::new(const 1_i32) -> bb1; // scope 0 at src/main.rs:25:13: 25:24
+                                         // mir::Constant
+                                         // + span: src/main.rs:25:13: 25:21
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(i32) -> std::boxed::Box<i32> {std::boxed::Box::<i32>::new}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageLive(_2);                 // scope 1 at src/main.rs:26:9: 26:10
+        StorageLive(_3);                 // scope 1 at src/main.rs:26:27: 26:28
+        _3 = move _1;                    // scope 1 at src/main.rs:26:27: 26:28
+        _2 = Box::<i32>::into_raw(move _3) -> bb2; // scope 1 at src/main.rs:26:13: 26:29
+                                         // mir::Constant
+                                         // + span: src/main.rs:26:13: 26:26
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: fn(std::boxed::Box<i32>) -> *mut i32 {std::boxed::Box::<i32>::into_raw}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_3);                 // scope 1 at src/main.rs:26:28: 26:29
+        StorageLive(_4);                 // scope 2 at src/main.rs:27:9: 27:18
+        StorageLive(_5);                 // scope 2 at src/main.rs:27:32: 27:33
+        _5 = _2;                         // scope 2 at src/main.rs:27:32: 27:33
+        _4 = Outer::new(move _5) -> bb3; // scope 2 at src/main.rs:27:21: 27:34
+                                         // mir::Constant
+                                         // + span: src/main.rs:27:21: 27:31
+                                         // + literal: Const { ty: fn(*mut i32) -> Outer {Outer::new}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb3: {
+        StorageDead(_5);                 // scope 2 at src/main.rs:27:33: 27:34
+        StorageLive(_6);                 // scope 3 at src/main.rs:28:5: 28:19
+        StorageLive(_7);                 // scope 3 at src/main.rs:28:5: 28:10
+        _7 = &mut _4;                    // scope 3 at src/main.rs:28:5: 28:10
+        _6 = Outer::change(move _7) -> bb4; // scope 3 at src/main.rs:28:5: 28:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:28:11: 28:17
+                                         // + literal: Const { ty: for<'r> fn(&'r mut Outer) {Outer::change}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_7);                 // scope 3 at src/main.rs:28:18: 28:19
+        StorageDead(_6);                 // scope 3 at src/main.rs:28:19: 28:20
+        StorageLive(_8);                 // scope 4 at src/main.rs:29:14: 29:30
+        StorageLive(_9);                 // scope 4 at src/main.rs:29:28: 29:29
+        _9 = _2;                         // scope 4 at src/main.rs:29:28: 29:29
+        _8 = Box::<i32>::from_raw(move _9) -> bb5; // scope 4 at src/main.rs:29:14: 29:30
+                                         // mir::Constant
+                                         // + span: src/main.rs:29:14: 29:27
+                                         // + user_ty: UserType(2)
+                                         // + literal: Const { ty: unsafe fn(*mut i32) -> std::boxed::Box<i32> {std::boxed::Box::<i32>::from_raw}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        StorageDead(_9);                 // scope 4 at src/main.rs:29:29: 29:30
+        drop(_8) -> bb6;                 // scope 4 at src/main.rs:29:30: 29:31
+    }
+
+    bb6: {
+        StorageDead(_8);                 // scope 4 at src/main.rs:29:30: 29:31
+        _0 = const ();                   // scope 4 at src/main.rs:29:5: 29:33
+        StorageDead(_4);                 // scope 2 at src/main.rs:30:1: 30:2
+        StorageDead(_2);                 // scope 1 at src/main.rs:30:1: 30:2
+        StorageDead(_1);                 // scope 0 at src/main.rs:30:1: 30:2
+        return;                          // scope 0 at src/main.rs:30:2: 30:2
+    }
+}
